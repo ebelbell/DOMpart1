@@ -97,42 +97,46 @@ var menuLinks = [
 // 1.   Select and cache the all of the <a> elements inside of topMenuEl in a variable named topMenuLinks.
     const topMenuLinks = topMenuEl.querySelectorAll('a'); //prints array of all the <a> elements
     // console.log(topMenuLinks);
-    console.log(topMenuEl);
+    console.log(topMenuLinks);
 
 
 // 2.   Attach a delegated 'click' event listener to topMenuEl.
 //      The first line of code of the event listener function should call the event object's preventDefault() method.
     topMenuEl.addEventListener("click", clickEvent);
        
-        function clickEvent(evt) {
-            console.log(evt);
+    function clickEvent(evt) {
+        console.log(evt);
 
 
-            evt.preventDefault();
-            //The second line of code of the function should immediately return if the element clicked was not an <a> element.
-            // evt.target.getElementsByTagName("a"); //find the <a> element inside the event property
-            console.log(evt.target.tagName);
+        evt.preventDefault();
+        //The second line of code of the function should immediately return if the element clicked was not an <a> element.
+        // evt.target.getElementsByTagName("a"); //find the <a> element inside the event property
+        console.log(evt.target.tagName);
 
 
-            let isAElement = evt.target.tagName; //store the tagName
-            console.log(isAElement);
-           
-            if (isAElement != 'A') { //if the tagName is NOT an <a> element
-                console.log(`Bye!`)
-                return;
-            }
-            else {
+        let isAElement = evt.target.tagName; //store the tagName
+        console.log(isAElement);
+
+        //this statement checks if the user has clicked on the top menu links, other than 'About'
+        if (isAElement != 'A') { //if the tagName is NOT an <a> element
+            console.log(`Bye!`);
+            return;
+        }
+        else {
             console.log(`Hi`);
         }
 
         //Now that we have references to each of these links, and a registered event listener, we will want to add a toggled
         //"active" state to each menu item, showing whether or not it is currently selected:
 
-        //The event listener should add the active class to the <a> element that was clicked, unless it was already active, in which case it should remove it.
-        evt.target.classList.add('active'); 
-        console.log(evt.target, ' <a> element is clicked');
-
         //The event listener should remove the active class from each other <a> element in topMenuLinks - whether the active class exists or not.
-        evt.target.classList.add('active'); 
-        console.log(evt.target, ' <a> element is not clicked');
+        //select an element in the active classList and remove it from the classList
+        document.querySelector('.active')?.classList.remove('active'); //the '?' prevents the code from returning an error if there is nothing active
+        console.log(topMenuLinks.target, ' <a> element is not clicked');
+
+        //The event listener should add the active class to the <a> element that was clicked, unless it was already active, in which case it should remove it.
+        topMenuLinks.classList.add('active'); 
+        console.log(topMenuLinks.target, ' <a> element is clicked');
+
+       
     }
