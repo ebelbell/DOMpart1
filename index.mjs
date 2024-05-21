@@ -126,6 +126,7 @@ var menuLinks = [
             console.log(`Hi`);
         }
 
+
         //Now that we have references to each of these links, and a registered event listener, we will want to add a toggled
         //"active" state to each menu item, showing whether or not it is currently selected:
 
@@ -135,8 +136,20 @@ var menuLinks = [
         console.log(topMenuLinks.target, ' <a> element is not clicked');
 
         //The event listener should add the active class to the <a> element that was clicked, unless it was already active, in which case it should remove it.
-        topMenuLinks.classList.add('active'); 
+        evt.target.classList.add('active');
         console.log(topMenuLinks.target, ' <a> element is clicked');
 
-       
+        // Show the corresponding submenu
+        const clickedLink = menuLinks.find(link => link.text === evt.target.textContent);
+        if (clickedLink && clickedLink.subLinks) {
+        
+        // Set the display property of the submenu to 'block'
+        subMenuEl.style.display = 'block';
+        
+        // Add code to populate the submenu with sublinks if needed
+        } else {
+
+        // Hide the submenu if there are no sublinks for the clicked menu item
+        subMenuEl.style.display = 'none';
+        }
     }
