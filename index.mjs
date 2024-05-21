@@ -121,7 +121,18 @@ var menuLinks = [
                 console.log(`Bye!`)
                 return;
             }
-            else
-                console.log(`Hi`)
-           
+            else {
+            console.log(`Hi`);
         }
+
+        //Now that we have references to each of these links, and a registered event listener, we will want to add a toggled
+        //"active" state to each menu item, showing whether or not it is currently selected:
+
+        //The event listener should add the active class to the <a> element that was clicked, unless it was already active, in which case it should remove it.
+        evt.target.classList.add('active'); 
+        console.log(evt.target, ' <a> element is clicked');
+
+        //The event listener should remove the active class from each other <a> element in topMenuLinks - whether the active class exists or not.
+        evt.target.classList.add('active'); 
+        console.log(evt.target, ' <a> element is not clicked');
+    }
